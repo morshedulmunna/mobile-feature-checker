@@ -8,7 +8,9 @@
 body {
   font-family: "Open Sans", sans-serif;
 }
-
+p {
+  margin-bottom: 0 !important;
+}
 /* Variable===========>> */
 :root {
   --primary: #d21a72;
@@ -44,16 +46,6 @@ body {
   justify-content: center;
 }
 
-/* __ For Mobile Version Responsive Search input and button ____ */
-@media screen and (max-width: 767px) {
-  .header {
-    width: 80%;
-    flex-direction: column;
-  }
-  .header button {
-    margin-top: 2rem;
-  }
-}
 .btn-color {
   background-color: var(--primary) !important;
   color: var(--white) !important;
@@ -93,6 +85,33 @@ body {
 .wrapper {
   margin-top: 2rem;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
+}
+
+.Basic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+/* __ For Mobile Version Responsive Search input and button ____ */
+@media screen and (max-width: 767px) {
+  .header {
+    width: 80%;
+    flex-direction: column;
+  }
+  .header button {
+    margin-top: 2rem;
+  }
+
+  .wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+/*___________ For Tablte Version Responsive ____________ */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

@@ -3,7 +3,6 @@ const dataLoading = () => {
   const searchResult = document
     .querySelector("#search-field")
     .value.toLowerCase();
-  // console.log(searchResult);
   const url = `https://openapi.programming-hero.com/api/phones?search=${searchResult}`;
   fetch(url)
     .then((response) => response.json())
@@ -43,10 +42,6 @@ const showAllPhones = (image, phone_name, brand, slug, phoneList) => {
               <p class="mb-2">Brand: ${brand}</p>
               <button 
               class="btn phoneDetailsbtn btn-color"
-              data-bs-toggle="modal"
-
-              data-bs-target="#${slug}" 
-              
               onclick="loadDataWithSlug('${slug}')"
               >See Details</button>
             </div>  `;
@@ -58,9 +53,6 @@ const showAllPhones = (image, phone_name, brand, slug, phoneList) => {
 //
 // Load Data with specified Phone ID
 const loadDataWithSlug = (slug) => {
-  const popModal = document.querySelector(".popModal");
-  console.log(popModal);
-  popModal.setAttribute("id", `${slug}`);
   const url = `https://openapi.programming-hero.com/api/phone/${slug}`;
   fetch(url)
     .then((response) => response.json())
@@ -69,9 +61,6 @@ const loadDataWithSlug = (slug) => {
 
 // Show Phone Details with specified Id
 const showPhoneDetails = (phoneDetailsInfo) => {
-  console.log(phoneDetailsInfo);
   const {} = phoneDetailsInfo.mainFeatures;
   const { image, name, brand, releaseDate, slug } = phoneDetailsInfo;
-
-  console.log(slug);
 };
