@@ -66,8 +66,30 @@ body {
 }
 
 .card-wrapper {
-  border: none !important;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 4rem;
 }
+.card {
+  border: none !important;
+  flex-direction: row !important;
+}
+.phone {
+  margin-bottom: 3rem !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.card-body {
+  width: 100%;
+  text-align: center;
+  margin: auto;
+}
+.phoneDetailsbtn {
+  font-size: 0.8rem !important;
+}
+
+/* .phoneDetails {
+} */
