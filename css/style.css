@@ -85,7 +85,14 @@ body {
 }
 
 /* Phone Details Info CSS */
+.phoneDetailsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .wrapper {
+  margin-top: 2rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
 }

@@ -43,6 +43,10 @@ const showAllPhones = (image, phone_name, brand, slug, phoneList) => {
               <p class="mb-2">Brand: ${brand}</p>
               <button 
               class="btn phoneDetailsbtn btn-color"
+              data-bs-toggle="modal"
+            
+              href="#exampleModalToggle" 
+              
               onclick="loadDataWithSlug('${slug}')"
               >See Details</button>
             </div>  `;
