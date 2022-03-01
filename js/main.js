@@ -1,39 +1,42 @@
 // Data Load Phones when click search
 const dataLoading = () => {
-  const searchResult = document.querySelector("#search-field").value;
-  //   console.log(searchResult);
+  const searchResult = document
+    .querySelector("#search-field")
+    .value.toLowerCase();
+  // console.log(searchResult);
   const url = `https://openapi.programming-hero.com/api/phones?search=${searchResult}`;
   fetch(url)
     .then((response) => response.json())
-    .then((data) => displaySearchResult(data.data));
+    .then((data) => {
+      displaySearchResult(data.data.slice(0, 20));
+    });
 
   document.querySelector("#search-field").value = "";
 };
 
+//=======================
+//
+//
 // Display Search Result Phone Collection Funtions
 const displaySearchResult = (phones) => {
+  const phoneList = document.querySelector("#phone-list");
+  phoneList.innerHTML = "";
   phones.forEach((phone) => {
     // console.log(phone);
     const { image, phone_name, brand, slug } = phone;
-    showAllPhones(image, phone_name, brand, slug);
+    showAllPhones(image, phone_name, brand, slug, phoneList);
   });
 };
 
 // Disply All Phones When Search with Name;
-const showAllPhones = (image, phone_name, brand, slug) => {
-  const phoneList = document.querySelector("#phone-list");
+const showAllPhones = (image, phone_name, brand, slug, phoneList) => {
   const phoneItemDiv = document.createElement("div");
   phoneItemDiv.classList.add("card", "card-wrapper", "col-md-4", "col-sm-6");
-  phoneItemDiv.setAttribute("id", `${slug}`);
   phoneItemDiv.innerHTML = `
-        <div class="phone">
             <div
               class="bg-image hover-overlay ripple"
-              data-mdb-ripple-color="light"
-            >
-              <img
-                src="${image}"
-              />
+              data-mdb-ripple-color="light">
+              <img src="${image}"/>
             </div>
             <div class="card-body">
               <h5 class="card-title font-weight-bold">${phone_name}</h5>
@@ -42,21 +45,23 @@ const showAllPhones = (image, phone_name, brand, slug) => {
               class="btn phoneDetailsbtn btn-color"
               onclick="loadDataWithSlug('${slug}')"
               >See Details</button>
-            </div>
-          </div>
-    `;
+            </div>  `;
   phoneList.appendChild(phoneItemDiv);
 };
 
+//==========================
+//
+//
 // Load Data with specified Phone ID
 const loadDataWithSlug = (slug) => {
   const url = `https://openapi.programming-hero.com/api/phone/${slug}`;
   fetch(url)
     .then((response) => response.json())
-    .then((data) => showPhoneDetails(data));
+    .then((data) => showPhoneDetails(data.data, slug));
 };
 
 // Show Phone Details with specified Id
 const showPhoneDetails = (phoneDetailsInfo) => {
   console.log(phoneDetailsInfo);
+  const { image, name, brand, releaseDate } = phoneDetailsInfo.mainFeatures;
 };
