@@ -44,8 +44,8 @@ const showAllPhones = (image, phone_name, brand, slug, phoneList) => {
               <button 
               class="btn phoneDetailsbtn btn-color"
               data-bs-toggle="modal"
-            
-              href="#exampleModalToggle" 
+
+              data-bs-target="#${slug}" 
               
               onclick="loadDataWithSlug('${slug}')"
               >See Details</button>
@@ -58,14 +58,20 @@ const showAllPhones = (image, phone_name, brand, slug, phoneList) => {
 //
 // Load Data with specified Phone ID
 const loadDataWithSlug = (slug) => {
+  const popModal = document.querySelector(".popModal");
+  console.log(popModal);
+  popModal.setAttribute("id", `${slug}`);
   const url = `https://openapi.programming-hero.com/api/phone/${slug}`;
   fetch(url)
     .then((response) => response.json())
-    .then((data) => showPhoneDetails(data.data, slug));
+    .then((data) => showPhoneDetails(data.data));
 };
 
 // Show Phone Details with specified Id
 const showPhoneDetails = (phoneDetailsInfo) => {
   console.log(phoneDetailsInfo);
-  const { image, name, brand, releaseDate } = phoneDetailsInfo.mainFeatures;
+  const {} = phoneDetailsInfo.mainFeatures;
+  const { image, name, brand, releaseDate, slug } = phoneDetailsInfo;
+
+  console.log(slug);
 };
