@@ -26,9 +26,30 @@
     <title>Mobile Feature Checker</title>
   </head>
   <body>
-    <nav>
-      <h1>Nav</h1>
+    <!-- Navbar Logo Part -->
+    <nav class="container">
+      <h1 class="logo"><i class="fa-brands fa-apple"></i>Mobo</h1>
     </nav>
+    <!-- Search and header Bg Part -->
+    <section class="__header-wrapper">
+      <div class="header">
+        <input
+          type="text"
+          class="form-control"
+          id="search-field"
+          placeholder="Search Your Mobile"
+        />
+        <button onclick="dataLoading()" type="submit" class="btn btn-color">
+          Submit
+        </button>
+      </div>
+    </section>
+    <!-- Mobile item View Part Start -->
+    <section class="container card-area">
+      <div id="phone-list" class="row">
+        <!-- All phone card coming from main.js File -->
+      </div>
+    </section>
     <script src="./js/main.js"></script>
   </body>
 </html>

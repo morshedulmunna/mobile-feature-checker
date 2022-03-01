@@ -9,7 +9,65 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
+/* Variable===========>> */
+:root {
+  --primary: #d21a72;
+  --bg-color: #fff;
+  --white: #fff;
+}
 /* nav */
-nav img {
-  width: 40px;
+.logo {
+  background-color: var(--bg-color);
+  color: var(--primary);
+  padding: 0.5rem 0rem;
+}
+
+/* Header Css ================>> */
+.__header-wrapper {
+  height: 50vh;
+  width: 100%;
+  background-image: url("../images/header-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.header {
+  width: 40%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* __ For Mobile Version Responsive Search input and button ____ */
+@media screen and (max-width: 767px) {
+  .header {
+    width: 80%;
+    flex-direction: column;
+  }
+  .header button {
+    margin-top: 2rem;
+  }
+}
+.btn-color {
+  background-color: var(--primary) !important;
+  color: var(--white) !important;
+  font-weight: 500 !important;
+}
+
+/* card-part */
+.card-area {
+  margin-top: 5rem;
+}
+
+.card-wrapper {
+  border: none !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
