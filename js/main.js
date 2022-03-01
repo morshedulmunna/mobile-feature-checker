@@ -61,6 +61,12 @@ const loadDataWithSlug = (slug) => {
 
 // Show Phone Details with specified Id
 const showPhoneDetails = (phoneDetailsInfo) => {
-  const {} = phoneDetailsInfo.mainFeatures;
   const { image, name, brand, releaseDate, slug } = phoneDetailsInfo;
+  const { storage, displaySize, chipSet, memory } =
+    phoneDetailsInfo.mainFeatures;
+  const { WLAN, Bluetooth, GPS, Radio, USB } = phoneDetailsInfo.others;
+  console.log(USB);
+
+  const sensors = phoneDetailsInfo.mainFeatures.sensors;
+  sensors.forEach((sensor) => sensor);
 };
