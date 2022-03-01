@@ -53,5 +53,10 @@ const loadDataWithSlug = (slug) => {
   const url = `https://openapi.programming-hero.com/api/phone/${slug}`;
   fetch(url)
     .then((response) => response.json())
-    .then((data) => console.log(data));
+    .then((data) => showPhoneDetails(data));
+};
+
+// Show Phone Details with specified Id
+const showPhoneDetails = (phoneDetailsInfo) => {
+  console.log(phoneDetailsInfo);
 };
