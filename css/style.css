@@ -95,6 +95,11 @@ p {
   align-items: center;
   flex-direction: column;
 }
+.detailsWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /* __ For Mobile Version Responsive Search input and button ____ */
 @media screen and (max-width: 767px) {
   .header {
