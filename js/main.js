@@ -11,13 +11,8 @@ const dataLoading = () => {
       if (data.status == false) {
         const alartDiv = document.querySelector("#alartDiv");
         alartDiv.classList.add("alert", "alert-danger");
-        const AlartText = document.querySelector("#AlartText");
-        AlartText.innerText = "Hy Stop!! No Result Found. Try Again";
-        document.querySelector("#search-field").value = "";
-        const detailsWrapper = document.querySelector("#detailsWrapper");
-        detailsWrapper.innerHTML = "";
-        const phoneList = document.querySelector("#phone-list");
-        phoneList.innerHTML = "";
+        showError();
+        htmlEmpty();
       } else {
         displaySearchResult(data.data.slice(0, 20));
         alartDiv.classList.remove("alert", "alert-danger");
@@ -29,9 +24,24 @@ const dataLoading = () => {
   document.querySelector("#search-field").value = "";
 };
 
-//=======================
-//
-//
+// Error Alart Show When get Error
+const showError = () => {
+  const AlartText = document.querySelector("#AlartText");
+  AlartText.innerText = "Hy Stop!! No Result Found. Try Again";
+};
+
+// Result Empty When Search Again
+const htmlEmpty = () => {
+  document.querySelector("#search-field").value = "";
+  const detailsWrapper = document.querySelector("#detailsWrapper");
+  detailsWrapper.innerHTML = "";
+  const phoneList = document.querySelector("#phone-list");
+  phoneList.innerHTML = "";
+};
+
+//===============================
+//                           ====
+//===============================
 // Display Search Result Phone Collection Funtions
 const displaySearchResult = (phones) => {
   const detailsWrapper = document.querySelector("#detailsWrapper");
@@ -66,9 +76,9 @@ const showAllPhones = (image, phone_name, brand, slug, phoneList) => {
   phoneList.appendChild(phoneItemDiv);
 };
 
-//==========================
-//
-//
+//===============================
+//                           ====
+//===============================
 // Load Data with specified Phone ID
 const loadDataWithSlug = (slug) => {
   const url = `https://openapi.programming-hero.com/api/phone/${slug}`;
@@ -76,7 +86,6 @@ const loadDataWithSlug = (slug) => {
     .then((response) => response.json())
     .then((data) => showPhoneDetails(data.data));
 };
-
 // Show Phone Details with specified Id
 const showPhoneDetails = (phoneDetailsInfo) => {
   window.scrollTo(0, 300);
@@ -91,14 +100,6 @@ const showPhoneDetails = (phoneDetailsInfo) => {
   const { storage, displaySize, chipSet, memory } =
     phoneDetailsInfo.mainFeatures;
   const phoneSensors = phoneDetailsInfo.mainFeatures.sensors;
-
-  /* const sensors = () => {
-    let sensor = "";
-    for (let loopSensor of phoneSensors) {
-      sensor = sensor + "," + loopSensor;
-    }
-    return sensor;
-  }; */
 
   mobiledetailsview.innerHTML = `
      <div class="col-md-4 col-sm-6">
