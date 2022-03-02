@@ -7,7 +7,11 @@ const dataLoading = () => {
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      displaySearchResult(data.data.slice(0, 20));
+      if (data.status == false) {
+        alert("No Phone Found ");
+      } else {
+        displaySearchResult(data.data.slice(0, 20));
+      }
     });
 
   document.querySelector("#search-field").value = "";
@@ -63,34 +67,31 @@ const loadDataWithSlug = (slug) => {
 
 // Show Phone Details with specified Id
 const showPhoneDetails = (phoneDetailsInfo) => {
+  window.scrollTo(0, 300);
   const detailsWrapper = document.querySelector("#detailsWrapper");
   detailsWrapper.innerHTML = "";
 
   const mobiledetailsview = document.createElement("div");
-  mobiledetailsview.classList.add("wrapper", "w-75");
+  mobiledetailsview.classList.add("wrapper", "row", "p-5");
 
   const { image, name, brand, releaseDate, slug } = phoneDetailsInfo;
-  console.log(slug);
 
   const { storage, displaySize, chipSet, memory } =
     phoneDetailsInfo.mainFeatures;
-  const sensors = phoneDetailsInfo.mainFeatures.sensors;
-  const { WLAN, Bluetooth, GPS, Radio, NFC, USB } = phoneDetailsInfo.others;
+  const phoneSensors = phoneDetailsInfo.mainFeatures.sensors;
 
-  console.log(phoneDetailsInfo.others);
+  const sensors = () => {
+    let sensor = "";
+    for (let loopSensor of phoneSensors) {
+      sensor = sensor + "," + loopSensor;
+    }
+    return sensor;
+  };
 
-  /* if (phoneDetailsInfo.others === null) {
-    mobiledetailsview.innerHTML = `
-    <div class="others">
-      <p>Others Feature Not now</p>
-    </div>
-    `;
-    detailsWrapper.appendChild(mobiledetailsview);
-  } */
   mobiledetailsview.innerHTML = `
-     <div class="Basic">
+     <div class="col-md-4 col-sm-6">
           <img
-            class=" w-75 img-fluid"
+            class=" w-50 img-fluid"
             src="${image ? image : "Image not found"}"
             alt=""
           />
@@ -101,7 +102,7 @@ const showPhoneDetails = (phoneDetailsInfo) => {
           }</p>
         </div>
 
-        <div class="mainFeature">
+        <div class="col-md-4 col-sm-6">
           <h4>Main Feature</h4>
           <ul>
             <li><strong>Storage</strong>: ${
@@ -117,21 +118,44 @@ const showPhoneDetails = (phoneDetailsInfo) => {
               <strong>Memory</strong>: ${memory ? memory : "Not Release"}
             </li>
             <li>
-              <strong>Sensors</strong>: ${sensors ? sensors : "Not Specified"}
+              <strong>Sensors</strong>:
+               <p>${sensors()}</p>
             </li>
           </ul>
         </div>
-        <div class="others">
+        <div class="col-md-4 col-sm-6">
           <h4>Others Feature</h4>
           <ul>
-            <li><strong>WLAN</strong>: ${WLAN ? WLAN : "Not Specified"} </li>
-            <li><strong>Bluetooth</strong>:${
-              Bluetooth ? Bluetooth : "Not Available"
+            <li><strong>WLAN</strong>: ${
+              phoneDetailsInfo?.others?.WLAN
+                ? phoneDetailsInfo?.others?.WLAN
+                : "Not Specified"
             } </li>
-            <li><strong>GPS</strong>: ${GPS ? GPS : "Not Available"} </li>
-            <li><strong>NFC</strong>: ${NFC ? NFC : "NO"} </li>
-            <li><strong>Radio</strong>: ${Radio ? Radio : "NO"} </li>
-            <li><strong>USB</strong>: ${USB ? USB : "Not Available"} </li>
+            <li><strong>Bluetooth</strong>:${
+              phoneDetailsInfo.others?.Bluetooth
+                ? phoneDetailsInfo?.others?.Bluetooth
+                : "Not Available"
+            } </li>
+            <li><strong>GPS</strong>: ${
+              phoneDetailsInfo.others?.GPS
+                ? phoneDetailsInfo?.others?.GPS
+                : "Not Available"
+            } </li>
+            <li><strong>NFC</strong>: ${
+              phoneDetailsInfo.others?.NFC
+                ? phoneDetailsInfo?.others?.NFC
+                : "NO"
+            } </li>
+            <li><strong>Radio</strong>: ${
+              phoneDetailsInfo.others?.Radio
+                ? phoneDetailsInfo?.others?.Radio
+                : "NO"
+            } </li>
+            <li><strong>USB</strong>: ${
+              phoneDetailsInfo.others?.USB
+                ? phoneDetailsInfo?.others?.USB
+                : "Not Available"
+            } </li>
           </ul>
         </div>
         

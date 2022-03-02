@@ -76,30 +76,6 @@ p {
   font-size: 0.8rem !important;
 }
 
-/* Phone Details Info CSS */
-.phoneDetailsContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.wrapper {
-  margin-top: 2rem;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
-}
-
-.Basic {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.detailsWrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 /* __ For Mobile Version Responsive Search input and button ____ */
 @media screen and (max-width: 767px) {
   .header {
@@ -108,15 +84,5 @@ p {
   }
   .header button {
     margin-top: 2rem;
-  }
-
-  .wrapper {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-/*___________ For Tablte Version Responsive ____________ */
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-  .wrapper {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
