@@ -101,6 +101,8 @@ const showPhoneDetails = (phoneDetailsInfo) => {
     phoneDetailsInfo.mainFeatures;
   const phoneSensors = phoneDetailsInfo.mainFeatures.sensors;
 
+  const sensorCollect = phoneSensors.map((sensor) => sensor + " ");
+
   mobiledetailsview.innerHTML = `
      <div class="col-md-4 col-sm-6">
           <img
@@ -131,15 +133,9 @@ const showPhoneDetails = (phoneDetailsInfo) => {
               <strong>Memory</strong>: ${memory ? memory : "Not Release"}
             </li>
             <li>
-              <strong>Sensors</strong>:
-              <ul>
-                 <p>${phoneSensors[0]}</p>
-                 <p>${phoneSensors[1]}</p>
-                 <p>${phoneSensors[2]}</p>
-                 <p>${phoneSensors[3]}</p>
-                 <p>${phoneSensors[4]}</p>
-                 <p>${phoneSensors[5]}</p>
-              </ul>
+              <strong>Sensors</strong>: ${
+                sensorCollect ? sensorCollect : "Not Specified"
+              }
             </li>
           </ul>
         </div>
