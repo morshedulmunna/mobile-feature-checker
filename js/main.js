@@ -4,13 +4,25 @@ const dataLoading = () => {
     .querySelector("#search-field")
     .value.toLowerCase();
   const url = `https://openapi.programming-hero.com/api/phones?search=${searchResult}`;
+
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
       if (data.status == false) {
-        alert("No Phone Found ");
+        const alartDiv = document.querySelector("#alartDiv");
+        alartDiv.classList.add("alert", "alert-danger");
+        const AlartText = document.querySelector("#AlartText");
+        AlartText.innerText = "Hy Stop!! No Result Found. Try Again";
+        document.querySelector("#search-field").value = "";
+        const detailsWrapper = document.querySelector("#detailsWrapper");
+        detailsWrapper.innerHTML = "";
+        const phoneList = document.querySelector("#phone-list");
+        phoneList.innerHTML = "";
       } else {
         displaySearchResult(data.data.slice(0, 20));
+        alartDiv.classList.remove("alert", "alert-danger");
+        const AlartText = document.querySelector("#AlartText");
+        AlartText.innerText = "";
       }
     });
 

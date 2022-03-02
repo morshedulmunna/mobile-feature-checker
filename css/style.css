@@ -76,6 +76,10 @@ p {
   font-size: 0.8rem !important;
 }
 
+.alartPart {
+  margin: auto !important;
+}
+
 /* __ For Mobile Version Responsive Search input and button ____ */
 @media screen and (max-width: 767px) {
   .header {
