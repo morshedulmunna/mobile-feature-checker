@@ -80,13 +80,13 @@ const showPhoneDetails = (phoneDetailsInfo) => {
     phoneDetailsInfo.mainFeatures;
   const phoneSensors = phoneDetailsInfo.mainFeatures.sensors;
 
-  const sensors = () => {
+  /* const sensors = () => {
     let sensor = "";
     for (let loopSensor of phoneSensors) {
       sensor = sensor + "," + loopSensor;
     }
     return sensor;
-  };
+  }; */
 
   mobiledetailsview.innerHTML = `
      <div class="col-md-4 col-sm-6">
@@ -119,7 +119,14 @@ const showPhoneDetails = (phoneDetailsInfo) => {
             </li>
             <li>
               <strong>Sensors</strong>:
-               <p>${sensors()}</p>
+              <ul>
+                 <p>${phoneSensors[0]}</p>
+                 <p>${phoneSensors[1]}</p>
+                 <p>${phoneSensors[2]}</p>
+                 <p>${phoneSensors[3]}</p>
+                 <p>${phoneSensors[4]}</p>
+                 <p>${phoneSensors[5]}</p>
+              </ul>
             </li>
           </ul>
         </div>
