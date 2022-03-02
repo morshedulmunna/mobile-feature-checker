@@ -1,5 +1,7 @@
 // Data Load Phones when click search
 const dataLoading = () => {
+  document.querySelector("#active").style.display = "block";
+
   const searchResult = document
     .querySelector("#search-field")
     .value.toLowerCase();
@@ -13,11 +15,13 @@ const dataLoading = () => {
         alartDiv.classList.add("alert", "alert-danger");
         showError();
         htmlEmpty();
+        document.querySelector("#active").style.display = "none";
       } else {
         displaySearchResult(data.data.slice(0, 20));
         alartDiv.classList.remove("alert", "alert-danger");
         const AlartText = document.querySelector("#AlartText");
         AlartText.innerText = "";
+        document.querySelector("#active").style.display = "none";
       }
     });
 
@@ -96,7 +100,6 @@ const showPhoneDetails = (phoneDetailsInfo) => {
   mobiledetailsview.classList.add("wrapper", "row", "p-5");
 
   const { image, name, brand, releaseDate, slug } = phoneDetailsInfo;
-
   const { storage, displaySize, chipSet, memory } =
     phoneDetailsInfo.mainFeatures;
   const phoneSensors = phoneDetailsInfo.mainFeatures.sensors;

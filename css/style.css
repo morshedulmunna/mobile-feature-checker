@@ -90,3 +90,9 @@ p {
     margin-top: 2rem;
   }
 }
+
+/* Spinner */
+
+#active {
+  display: none;
+}
